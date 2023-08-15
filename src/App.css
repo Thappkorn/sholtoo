@@ -1,3 +1,14 @@
 .selected__word {
   font-weight: 500;
 }
+
+.nav__active {
+  color: #343a40 !important;
+  font-weight: 600 !important;
+}
+
+.logo__navbar {
+  color: #343a40;
+  font-weight: 600;
+  cursor: pointer;
+}
