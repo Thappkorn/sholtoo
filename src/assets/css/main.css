@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;500&display=swap");
+* {
+  font-family: "Prompt", sans-serif;
+}
+.selected__word {
+  font-weight: 500;
+}
+
+.nav__active {
+  color: #343a40 !important;
+  font-weight: 600 !important;
+}
+
+.logo__navbar {
+  color: #343a40;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.image__profile {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+}
+
+.text__table {
+  vertical-align: middle;
+}

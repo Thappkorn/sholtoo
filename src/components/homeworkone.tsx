@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col, Card, Form } from "react-bootstrap";
-import "../App.css";
 
 const HomeWorkOne: React.FC = () => {
   const Numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -32,39 +31,37 @@ const HomeWorkOne: React.FC = () => {
   }, [count]);
 
   return (
-    <>
-      <Container fluid="md">
-        <Row>
-          <Col lg={12}>
-            <Card className="mt-5">
-              <Card.Header as="h3">HomeWork By PlaToo</Card.Header>
-              <Card.Body className="p-4">
-                <Card.Title>HomeWork No. 1</Card.Title>
-                <Form.Group className="mb-5">
-                  <Form.Select onChange={selectChange}>
-                    {Numbers.map((value) => (
-                      <option key={value} value={value}>
-                        {value}
-                      </option>
-                    ))}
-                  </Form.Select>
-                </Form.Group>
-                <Card.Title>HomeWork No.2</Card.Title>
-                <Card.Text className="mb-5">
-                  Selected: <span className="selected__word">{numberWord}</span>
-                </Card.Text>
+    <Container>
+      <Row>
+        <Col lg={12}>
+          <Card className="mt-3">
+            <Card.Header as="h3">HomeWork By PlaToo</Card.Header>
+            <Card.Body className="p-4">
+              <Card.Title>HomeWork No. 1</Card.Title>
+              <Form.Group className="mb-5">
+                <Form.Select onChange={selectChange}>
+                  {Numbers.map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+              <Card.Title>HomeWork No.2</Card.Title>
+              <Card.Text className="mb-5">
+                Selected: <span className="selected__word">{numberWord}</span>
+              </Card.Text>
 
-                <Card.Title>HomeWork No.3</Card.Title>
-                <Card.Text className="mb-5">
-                  Total Selected:{" "}
-                  <span className="selected__word">{selectCount}</span>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </>
+              <Card.Title>HomeWork No.3</Card.Title>
+              <Card.Text className="mb-5">
+                Total Selected:{" "}
+                <span className="selected__word">{selectCount}</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

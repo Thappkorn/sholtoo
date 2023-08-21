@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate, useMatch } from "react-router-dom";
-import "../App.css";
 
 const menuNavbar: React.FC = () => {
   const navigate = useNavigate();
@@ -14,7 +13,7 @@ const menuNavbar: React.FC = () => {
     navigate("/");
   };
   const gotoProfile = () => {
-    navigate("/profile");
+    navigate("/profile", { state: { id: "5", name: "Thappkorn" } });
   };
   const gotoAbout = () => {
     navigate("/about");
