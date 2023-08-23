@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { DATAPETS } from "../models/dataPet";
+import { useNavigate } from "react-router-dom";
 
 interface typePet {
   id: number;
@@ -20,7 +21,13 @@ interface typePet {
 }
 
 const HomeWorkTwo: React.FC = () => {
+  const navigate = useNavigate();
   const [Pets, setPets] = useState<typePet[]>(DATAPETS);
+
+  const viewClick = (pet: typePet) => {
+    navigate("/profile", { state: pet });
+  };
+
   return (
     <Container>
       <Row>
@@ -54,7 +61,10 @@ const HomeWorkTwo: React.FC = () => {
                       </td>
                       <td className="text__table">{data.pettype}</td>
                       <td>
-                        <Button variant="outline-info">
+                        <Button
+                          variant="outline-info"
+                          onClick={() => viewClick(data)}
+                        >
                           <FontAwesomeIcon icon={faEye} /> View
                         </Button>
                       </td>
