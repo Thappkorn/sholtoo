@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { DATAPETS } from "../models/dataPet";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
 
-const HWProfile: React.FC = () => {
-  const { state } = useLocation();
-  const { id = "", name = "", pettype = "", pathimage = "" } = state;
-  console.log(state);
+interface Props {
+  petid: string;
+  name?: string;
+  website?: string;
+}
+
+const HWProfile: React.FC<Props> = ({ petid, name, website }) => {
+  const id = Number(petid.toString());
+
+  const data = useMemo(() => {
+    return DATAPETS.find((x) => Number(x.id) === id);
+  }, [id]);
 
   return (
     <Container className="mt-3">
@@ -19,21 +27,21 @@ const HWProfile: React.FC = () => {
                 <Row>
                   <Col lg={6} sm={12}>
                     <Image
-                      src={pathimage}
-                      alt={name}
+                      src={data?.pathimage}
+                      alt={data?.name}
                       className="img__profile__com"
                     />
                   </Col>
                   <Col lg={6} sm={12}>
                     <Row>
                       <Col lg={6} sm={6}>
-                        <h5>ID: {id}</h5>
+                        <h5>ID: {data?.id}</h5>
                       </Col>
                       <Col lg={6} sm={6}>
-                        <h5>Name: {name}</h5>
+                        <h5>Name: {data?.name}</h5>
                       </Col>
                       <Col lg={6} sm={6}>
-                        <h5>Pet Type: {pettype}</h5>
+                        <h5>Pet Type: {data?.pettype}</h5>
                       </Col>
                     </Row>
                   </Col>

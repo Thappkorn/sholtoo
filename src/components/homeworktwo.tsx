@@ -22,7 +22,7 @@ interface typePet {
 
 const HomeWorkTwo: React.FC = () => {
   const navigate = useNavigate();
-  const [Pets, setPets] = useState<typePet[]>(DATAPETS);
+  // const [Pets, setPets] = useState<typePet[]>(DATAPETS);
 
   const viewClick = (pet: typePet) => {
     navigate("/profile", { state: pet });
@@ -47,7 +47,7 @@ const HomeWorkTwo: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {Pets.map((data) => (
+                  {DATAPETS.map((data) => (
                     <tr key={data.id}>
                       <td className="text__table">{data.id}</td>
                       <td className="text__table">{data.name}</td>
