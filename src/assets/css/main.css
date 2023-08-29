@@ -28,10 +28,19 @@
 }
 
 .img__profile__com {
-  width: 100%;
+  width: 95%;
   height: 350px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.label__profile {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn__update {
+  margin-right: 10px;
 }
 
 @media (min-width: 412px) {

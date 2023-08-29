@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   Row,
@@ -16,13 +16,15 @@ import { useNavigate } from "react-router-dom";
 interface typePet {
   id: number;
   name: string;
-  pettype: string;
+  lastname: string;
+  age: string;
   pathimage: string;
+  position: string;
+  gender: string;
 }
 
 const HomeWorkTwo: React.FC = () => {
   const navigate = useNavigate();
-  // const [Pets, setPets] = useState<typePet[]>(DATAPETS);
 
   const viewClick = (pet: typePet) => {
     navigate("/profile", { state: pet });
@@ -41,8 +43,11 @@ const HomeWorkTwo: React.FC = () => {
                   <tr>
                     <th>No.</th>
                     <th>Name</th>
-                    <th>PetType</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
                     <th>Image</th>
+                    <th>Position</th>
+                    <th>Gender</th>
                     <th>View</th>
                   </tr>
                 </thead>
@@ -51,6 +56,8 @@ const HomeWorkTwo: React.FC = () => {
                     <tr key={data.id}>
                       <td className="text__table">{data.id}</td>
                       <td className="text__table">{data.name}</td>
+                      <td className="text__table">{data.lastname}</td>
+                      <td className="text__table">{data.age}</td>
                       <td className="text__table">
                         <Image
                           src={data.pathimage}
@@ -59,7 +66,8 @@ const HomeWorkTwo: React.FC = () => {
                           className="image__profile"
                         />
                       </td>
-                      <td className="text__table">{data.pettype}</td>
+                      <td className="text__table">{data.position}</td>
+                      <td className="text__table">{data.gender}</td>
                       <td>
                         <Button
                           variant="outline-info"

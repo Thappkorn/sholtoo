@@ -1,20 +1,21 @@
-import React, { useMemo } from "react";
-import { DATAPETS } from "../models/dataPet";
-import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import React from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Image,
+  Form,
+  Button,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
-  petid: string;
-  name?: string;
-  website?: string;
+  ProfileID: any;
 }
 
-const HWProfile: React.FC<Props> = ({ petid, name, website }) => {
-  const id = Number(petid.toString());
-
-  const data = useMemo(() => {
-    return DATAPETS.find((x) => Number(x.id) === id);
-  }, [id]);
-
+const HWProfile: React.FC<Props> = ({ ProfileID }) => {
+  const navigate = useNavigate();
   return (
     <Container className="mt-3">
       <Row>
@@ -22,26 +23,104 @@ const HWProfile: React.FC<Props> = ({ petid, name, website }) => {
           <Card className="mt-5">
             <Card.Header as="h3">HomeWork By PlaToo</Card.Header>
             <Card.Body className="p-4">
-              <Card.Title className="mb-3">HomeWork No. 2</Card.Title>
+              <Card.Title className="mb-3">
+                Profile No. {ProfileID.id}
+              </Card.Title>
               <div>
                 <Row>
                   <Col lg={6} sm={12}>
                     <Image
-                      src={data?.pathimage}
-                      alt={data?.name}
+                      src={ProfileID?.pathimage}
+                      alt={ProfileID?.name}
                       className="img__profile__com"
                     />
                   </Col>
                   <Col lg={6} sm={12}>
                     <Row>
                       <Col lg={6} sm={6}>
-                        <h5>ID: {data?.id}</h5>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="label__profile">
+                            Name :
+                          </Form.Label>
+                          <Form.Control
+                            value={ProfileID?.name}
+                            name="name"
+                          ></Form.Control>
+                        </Form.Group>
                       </Col>
                       <Col lg={6} sm={6}>
-                        <h5>Name: {data?.name}</h5>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="label__profile">
+                            LastName :
+                          </Form.Label>
+                          <Form.Control
+                            value={ProfileID?.lastname}
+                            name="lastname"
+                          ></Form.Control>
+                        </Form.Group>
                       </Col>
                       <Col lg={6} sm={6}>
-                        <h5>Pet Type: {data?.pettype}</h5>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="label__profile">
+                            Age :
+                          </Form.Label>
+                          <Form.Select name="age">
+                            <option value={ProfileID?.age}>
+                              {ProfileID?.age}
+                            </option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                      <Col lg={6} sm={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="label__profile">
+                            Position :
+                          </Form.Label>
+                          <Form.Control
+                            value={ProfileID?.position}
+                            name="position"
+                          ></Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col lg={6} sm={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="label__profile">
+                            Gender :
+                          </Form.Label>
+                          <Form.Check
+                            type="radio"
+                            name="gender"
+                            label="Male"
+                            id="male"
+                            checked={ProfileID?.gender === "Male"}
+                          />
+                          <Form.Check
+                            type="radio"
+                            name="gender"
+                            label="Female"
+                            id="female"
+                            checked={ProfileID.gender === "Female"}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12}>
+                        <Button variant="success" className="btn__update">
+                          Save
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          className="btn__update"
+                          onClick={() => navigate("/")}
+                        >
+                          Back
+                        </Button>
                       </Col>
                     </Row>
                   </Col>
