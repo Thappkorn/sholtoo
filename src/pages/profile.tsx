@@ -2,14 +2,17 @@ import React, { useMemo } from "react";
 import { Container } from "react-bootstrap";
 import HWProfile from "../components/hwProfile";
 import { useLocation } from "react-router-dom";
-import { DATAPETS } from "../models/dataPet";
+import { DATAPETS } from "../models/dataProfile";
 
 const Profile: React.FC = () => {
   const { state } = useLocation();
-  const id = Number(state.id.toString());
+  const id = state;
+  console.log(id);
 
   const data = useMemo(() => {
-    return DATAPETS.find((profile) => Number(profile.id) === id);
+    if (!id) return [];
+
+    return DATAPETS.find((profile) => profile.id === id.id);
   }, [id]);
 
   return (
@@ -18,7 +21,7 @@ const Profile: React.FC = () => {
         <h2>Profile</h2>
       </Container>
 
-      {id !== 0 && <HWProfile ProfileID={data} />}
+      {data && <HWProfile {...data} />}
     </>
   );
 };

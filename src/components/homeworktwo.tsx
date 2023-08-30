@@ -10,10 +10,10 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { DATAPETS } from "../models/dataPet";
+import { DATAPETS } from "../models/dataProfile";
 import { useNavigate } from "react-router-dom";
 
-interface typePet {
+interface Props {
   id: number;
   name: string;
   lastname: string;
@@ -26,8 +26,8 @@ interface typePet {
 const HomeWorkTwo: React.FC = () => {
   const navigate = useNavigate();
 
-  const viewClick = (pet: typePet) => {
-    navigate("/profile", { state: pet });
+  const viewClick = (profile: Props) => {
+    navigate("/profile", { state: profile });
   };
 
   return (

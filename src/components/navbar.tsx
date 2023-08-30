@@ -14,7 +14,9 @@ const menuNavbar: React.FC = () => {
   };
   const gotoProfile = () => {
     navigate("/profile", {
-      state: { id: "", name: "", pettype: "", pathimage: "" },
+      state: {
+        id: "",
+      },
     });
   };
   const gotoAbout = () => {

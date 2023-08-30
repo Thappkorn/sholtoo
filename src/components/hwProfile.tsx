@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Container,
   Row,
@@ -11,11 +11,36 @@ import {
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-  ProfileID: any;
+  id: number;
+  pathimage: string;
+  name: string;
+  lastname: string;
+  age: string;
+  position: string;
+  gender: string;
 }
 
-const HWProfile: React.FC<Props> = ({ ProfileID }) => {
+const HWProfile: React.FC<Props> = ({
+  id,
+  name,
+  lastname,
+  age,
+  pathimage,
+  position,
+  gender,
+}) => {
   const navigate = useNavigate();
+  const MaleChecked = useMemo(() => {
+    if (gender === "Male") return true;
+
+    return false;
+  }, [gender]);
+  const FemaleCheked = useMemo(() => {
+    if (gender === "Female") return true;
+
+    return false;
+  }, [gender]);
+
   return (
     <Container className="mt-3">
       <Row>
@@ -23,15 +48,13 @@ const HWProfile: React.FC<Props> = ({ ProfileID }) => {
           <Card className="mt-5">
             <Card.Header as="h3">HomeWork By PlaToo</Card.Header>
             <Card.Body className="p-4">
-              <Card.Title className="mb-3">
-                Profile No. {ProfileID.id}
-              </Card.Title>
+              <Card.Title className="mb-3">Profile No. {id}</Card.Title>
               <div>
                 <Row>
                   <Col lg={6} sm={12}>
                     <Image
-                      src={ProfileID?.pathimage}
-                      alt={ProfileID?.name}
+                      src={pathimage}
+                      alt={name}
                       className="img__profile__com"
                     />
                   </Col>
@@ -42,10 +65,7 @@ const HWProfile: React.FC<Props> = ({ ProfileID }) => {
                           <Form.Label className="label__profile">
                             Name :
                           </Form.Label>
-                          <Form.Control
-                            value={ProfileID?.name}
-                            name="name"
-                          ></Form.Control>
+                          <Form.Control value={name} name="name"></Form.Control>
                         </Form.Group>
                       </Col>
                       <Col lg={6} sm={6}>
@@ -54,7 +74,7 @@ const HWProfile: React.FC<Props> = ({ ProfileID }) => {
                             LastName :
                           </Form.Label>
                           <Form.Control
-                            value={ProfileID?.lastname}
+                            value={lastname}
                             name="lastname"
                           ></Form.Control>
                         </Form.Group>
@@ -64,18 +84,7 @@ const HWProfile: React.FC<Props> = ({ ProfileID }) => {
                           <Form.Label className="label__profile">
                             Age :
                           </Form.Label>
-                          <Form.Select name="age">
-                            <option value={ProfileID?.age}>
-                              {ProfileID?.age}
-                            </option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                          </Form.Select>
+                          <Form.Control value={age} name="age"></Form.Control>
                         </Form.Group>
                       </Col>
                       <Col lg={6} sm={6}>
@@ -84,7 +93,7 @@ const HWProfile: React.FC<Props> = ({ ProfileID }) => {
                             Position :
                           </Form.Label>
                           <Form.Control
-                            value={ProfileID?.position}
+                            value={position}
                             name="position"
                           ></Form.Control>
                         </Form.Group>
@@ -99,14 +108,14 @@ const HWProfile: React.FC<Props> = ({ ProfileID }) => {
                             name="gender"
                             label="Male"
                             id="male"
-                            checked={ProfileID?.gender === "Male"}
+                            checked={MaleChecked}
                           />
                           <Form.Check
                             type="radio"
                             name="gender"
                             label="Female"
                             id="female"
-                            checked={ProfileID.gender === "Female"}
+                            checked={FemaleCheked}
                           />
                         </Form.Group>
                       </Col>
